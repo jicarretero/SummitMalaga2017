@@ -1,0 +1,14 @@
+unset OS_TENANT_ID
+unset OS_TENANT_NAME
+
+export OS_REGION_NAME="Spain2"
+export OS_USERNAME='joseignacio.carretero@fiware.org'
+export OS_AUTH_URL=http://cloud.lab.fiware.org:4730
+export OS_PROJECT_NAME="jicarretero cloud"
+export OS_PROJECT_DOMAIN_ID=default
+export OS_USER_DOMAIN_ID=default
+export OS_IDENTITY_API_VERSION=3
+echo -n password: 
+read -s OS_PASSWORD
+export OS_PASSWORD
+export PS1='[\u@\h \W(keystone_admin)]\$ '
