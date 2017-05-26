@@ -22,15 +22,19 @@ Additionally, another 2 variables can be exported:
 
 * nomodeset - If this variable is defined (I mean defined, with no particular value), the script will try to modify grub.cfg file and set "nomodeset" to the kernel parameters.
 
+.
 
     export nomodeset=yes
 
+
 * outputformat - I this variable is defined, the script will try to convert the image to the output format given in the variable. Some possible values for outputformat are vdi, vmdk, raw -- Basically anything that "qemu-img convert" supports. Some examples:
 
+.
 
     export outputformat=vdi
     export outputformat=vmdk
     export outputformat=raw
+
 
 ## Dockerfile
 Any Dockerfile is a good way to explain what to install and what is it needed to run something. If you want so, you can create  your own Docker image:
@@ -45,6 +49,6 @@ And you can use this way (a few examples):
     docker run --privileged -v /mylocaldirectory:/data -ti --name change -e image=yourimagefile.qcow2 remove_cloudinit
 
 
-* First of all, you must run this docker with --privileged option because it is going to mount images and this can only be done by root.
+* First of all, you must run this docker with *--privileged* option because it is going to mount images and this can only be done by root.
 * In /data you can mount the directory where your image is stored. In case your provide "-e outputformat=xxx", a new image wil be created in the same directory/place as the qcow2 image file.
 
