@@ -22,9 +22,11 @@ Additionally, another 2 variables can be exported:
 
 * nomodeset - If this variable is defined (I mean defined, with no particular value), the script will try to modify grub.cfg file and set "nomodeset" to the kernel parameters.
 
+
     export nomodeset=yes
 
 * outputformat - I this variable is defined, the script will try to convert the image to the output format given in the variable. Some possible values for outputformat are vdi, vmdk, raw -- Basically anything that "qemu-img convert" supports. Some examples:
+
 
     export outputformat=vdi
     export outputformat=vmdk
