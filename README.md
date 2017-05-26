@@ -13,6 +13,7 @@ This are the Slides for my FIWARE Summit Presentation, and a little shell script
 
 ## Script remove_cloudinit.sh
 When using the script invoked from the command line, can take an argument: The image name to be modified. This image name can also be set this way:
+
     export image=......
 
 The Script will mount the image, it will remove cloud init and it will change the password of the main user of the image. The main user of the image, as it is thought to work using FIWARE Lab images by default, is supposed to be centos, ubuntu or debian. It tryied to find the default user and sets it password to "passw0rd".
@@ -20,21 +21,27 @@ The Script will mount the image, it will remove cloud init and it will change th
 Additionally, another 2 variables can be exported:
 
 * nomodeset - If this variable is defined (I mean defined, with no particular value), the script will try to modify grub.cfg file and set "nomodeset" to the kernel parameters.
+
     export nomodeset=yes
+
 * outputformat - I this variable is defined, the script will try to convert the image to the output format given in the variable. Some possible values for outputformat are vdi, vmdk, raw -- Basically anything that "qemu-img convert" supports. Some examples:
+
     export outputformat=vdi
     export outputformat=vmdk
     export outputformat=raw
 
 ## Dockerfile
 Any Dockerfile is a good way to explain what to install and what is it needed to run something. If you want so, you can create  your own Docker image:
+
     docker build -t remove_cloudinit  .
 
 And you can use this way (a few examples):
+
     docker run --privileged -v /mylocaldirectory:/data -ti --name change -e image=yourimagefile.qcow2 -e nomodeset=yes -e outputformat=vdi remove_cloudinit
     docker run --privileged -v /mylocaldirectory:/data -ti --name change -e image=yourimagefile.qcow2 -e outputformat=vdi remove_cloudinit
     docker run --privileged -v /mylocaldirectory:/data -ti --name change -e image=yourimagefile.qcow2 -e nomodeset=yes remove_cloudinit
     docker run --privileged -v /mylocaldirectory:/data -ti --name change -e image=yourimagefile.qcow2 remove_cloudinit
+
 
 * First of all, you must run this docker with --privileged option because it is going to mount images and this can only be done by root.
 * In /data you can mount the directory where your image is stored. In case your provide "-e outputformat=xxx", a new image wil be created in the same directory/place as the qcow2 image file.
