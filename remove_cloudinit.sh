@@ -1,6 +1,6 @@
 #!/bin/bash -x
 #
-# Author: José Ignacio Carretero Guarde
+# Author: Jose Ignacio Carretero Guarde
 #
 
 CHROOT=chroot.sh
